@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRAVEN · Forjado na coragem</title>
+<meta name="description" content="Camisetas e bonés com propósito. Todo o lucro da BRAVEN vai para o tratamento e a recuperação do Raul.">
+<meta property="og:title" content="BRAVEN · Vista a coragem">
+<meta property="og:description" content="Catálogo de camisetas, croppeds, infantil e bonés. Todo o lucro vai para o tratamento do Raul.">
+<meta property="og:image" content="https://vivaldigui.github.io/braven/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://vivaldigui.github.io/braven/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#97a88a">
+<link rel="icon" type="image/png" href="img/aguia.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f3eee6;
+  --paper:#ebe4d8;
+  --ink:#171717;
+  --muted:#6b665e;
+  --line:#d9d1c3;
+  --sage:#97a88a;
+  --sage-deep:#5f6f52;
+  --olive:#3d4633;
+  --terra:#b4562e;
+  --white:#fffdf9;
+  --radius:14px;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font:400 16px/1.6 Montserrat,system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.eyebrow{font:600 12px/1 Montserrat;letter-spacing:.28em;text-transform:uppercase}
+.display{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:-.01em;line-height:.95}
+.eagle{display:inline-block;background:currentColor;-webkit-mask:url(img/aguia.png) center/contain no-repeat;mask:url(img/aguia.png) center/contain no-repeat}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(243,238,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+.brand .eagle{width:30px;height:25px}
+.brand b{font:400 22px/1 "Archivo Black";letter-spacing:.02em}
+.nav{display:flex;gap:22px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.nav a{text-decoration:none;opacity:.75}.nav a:hover{opacity:1}
+.top-actions{display:flex;gap:8px;align-items:center}
+.bag-btn{position:relative;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--white);font-size:13px;font-weight:600}
+.bag-btn svg{width:18px;height:18px}
+.count{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--terra);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.count[data-n="0"]{display:none}
+
+/* hero */
+.hero{position:relative;background:var(--sage);color:var(--ink);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:72px}
+.hero .eyebrow{color:var(--olive)}
+.hero h1{font-size:clamp(64px,12vw,148px);margin:18px 0 6px}
+.hero .tag{font:700 clamp(22px,3vw,30px)/1.15 "Roboto Slab",serif;color:var(--olive);margin-bottom:22px}
+.hero p.lead{font-size:18px;max-width:30em;margin-bottom:30px}
+.hero p.lead strong{font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-dark:hover{background:#000}
+.btn-line{border:2px solid var(--ink)}
+.btn-line:hover{background:rgba(0,0,0,.06)}
+.btn-wa{background:#1fa855;color:#fff}
+.btn-wa:hover{background:#178f47}
+.btn svg{width:20px;height:20px;flex:none}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:500px;justify-self:center;width:100%}
+.hero-art .shirt{position:absolute;width:49%;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(30,35,25,.25)}
+.hero-art .s1{left:0;top:4%;transform:rotate(-5deg)}
+.hero-art .s2{right:0;top:0;transform:rotate(4deg)}
+.hero-art .s3{left:3%;bottom:0;transform:rotate(3deg)}
+.hero-art .s4{right:2%;bottom:5%;transform:rotate(-4deg)}
+.hero-bg-eagle{position:absolute;right:-6%;bottom:-14%;width:52%;aspect-ratio:436/361;color:rgba(61,70,51,.12);pointer-events:none}
+
+/* proof strip */
+.strip{background:var(--ink);color:var(--white)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:26px;padding-bottom:26px}
+.strip div{display:flex;gap:14px;align-items:center}
+.strip b{font:400 34px/1 "Archivo Black";color:var(--sage)}
+.strip span{font-size:13px;line-height:1.35;opacity:.85}
+
+/* sections */
+section{scroll-margin-top:64px}
+.sec{padding:88px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(34px,5vw,52px)}
+.sec-head .eyebrow{display:block;margin-bottom:12px;color:var(--terra)}
+.sec-head p{max-width:30em;color:var(--muted)}
+
+/* story */
+.story{background:var(--paper)}
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.story-text p{font-size:17px;margin-bottom:18px}
+.story-text p strong{font-weight:700}
+.quote{background:var(--olive);color:var(--cream);border-radius:var(--radius);padding:36px 32px;position:relative}
+.quote .eagle{width:46px;height:38px;color:var(--sage);margin-bottom:18px}
+.quote blockquote{font:500 22px/1.4 "Roboto Slab",serif;margin-bottom:18px}
+.quote cite{font-style:normal;font-size:13px;letter-spacing:.06em;opacity:.75}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.values div{border-radius:10px;padding:14px 10px;text-align:center;color:#fff;font:400 15px/1 "Archivo Black";letter-spacing:.02em}
+
+/* catalog */
+.cat-nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin:-8px 0 30px;scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav a{flex:none;text-decoration:none;font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white)}
+.cat-nav a:hover{border-color:var(--ink)}
+.group{margin-bottom:64px;scroll-margin-top:76px}
+.group-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-left:4px solid var(--ink);padding-left:14px;margin-bottom:22px}
+.group-head h3{font:400 24px/1.1 "Archivo Black";letter-spacing:.04em;text-transform:uppercase}
+.group-head small{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.card .ph{position:relative;background:#e8e1d5;aspect-ratio:1/1;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+.thumbs{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}
+.thumbs button{width:44px;height:44px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:#fff;opacity:.8}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border-radius:6px}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h4{font:400 21px/1.1 "Archivo Black";letter-spacing:.02em}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:4px}
+.card .cor{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card .price{font-weight:700;font-size:17px;white-space:nowrap}
+.card .price.ask{font-size:13px;color:var(--muted);font-weight:600}
+.card .desc{font-size:14px;color:var(--muted);line-height:1.5}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.seg{display:flex;background:var(--cream);border-radius:10px;padding:3px;gap:3px}
+.seg button{flex:1;height:36px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.sizes{display:flex;flex-wrap:wrap;gap:7px}
+.sizes button{min-width:48px;height:42px;padding:0 12px;border-radius:9px;border:1.5px solid var(--line);font-weight:700;font-size:14px;background:var(--white)}
+.sizes button:hover{border-color:var(--ink)}
+.sizes button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.add{margin-top:auto;height:48px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
+.add:disabled{background:#cfc8bb;color:#fff;cursor:not-allowed}
+.add.ok{background:var(--sage-deep)}
+
+/* sizes table */
+.tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tbl{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.tbl h4{background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px}
+.tbl table{width:100%;border-collapse:collapse;font-size:15px}
+.tbl td{padding:11px 16px;border-top:1px solid var(--line)}
+.tbl tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:700;width:40%}
+.tbl td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted);margin-top:16px}
+.feats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.feats span{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:999px;background:var(--paper)}
+
+/* how */
+.how{background:var(--sage)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--cream);border-radius:var(--radius);padding:28px 24px}
+.step::before{counter-increment:s;content:counter(s);font:400 44px/1 "Archivo Black";color:var(--terra);display:block;margin-bottom:14px}
+.step h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.step p{font-size:15px;color:#4a463f}
+.how .btns{margin-top:34px}
+
+/* footer */
+footer{background:var(--ink);color:var(--cream);padding:56px 0 110px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+footer .brand .eagle{width:42px;height:35px;color:var(--sage)}
+footer .brand b{font-size:30px}
+footer p{font-size:14px;opacity:.7;margin-top:10px}
+footer .links{display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:600}
+footer .links a{text-decoration:none;display:flex;gap:10px;align-items:center}
+footer .links svg{width:20px;height:20px}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(20,20,20,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--cream);z-index:41;transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column}
+body.open .scrim{opacity:1;pointer-events:auto}
+body.open .drawer{transform:none}
+body.open{overflow:hidden}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.d-head h3{font:400 22px/1 "Archivo Black"}
+.x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:22px}
+.x:hover{background:var(--paper)}
+.d-body{flex:1;overflow:auto;padding:12px 20px}
+.empty{text-align:center;color:var(--muted);padding:60px 10px}
+.empty .eagle{width:70px;height:58px;color:var(--line);margin:0 auto 16px}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.line img{width:64px;height:64px;border-radius:8px;object-fit:cover}
+.line b{display:block;font-size:14px}
+.line small{font-size:12px;color:var(--muted)}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;background:var(--white)}
+.qty button{width:32px;height:32px;font-size:17px;font-weight:700}
+.qty span{min-width:20px;text-align:center;font-weight:700;font-size:14px}
+.d-foot{border-top:1px solid var(--line);padding:16px 20px 20px;background:var(--white)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.fields input{height:44px;border:1.5px solid var(--line);border-radius:9px;padding:0 12px;font:inherit;font-size:15px;background:var(--cream);width:100%}
+.fields input:focus{outline:2px solid var(--ink);outline-offset:-1px}
+.total{display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px}
+.d-foot .btn{width:100%}
+.d-foot .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+/* toast + mobile bar */
+.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:50;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast button{color:var(--sage);font-weight:700;margin-left:10px;text-decoration:underline}
+.mbar{display:none}
+
+@media (max-width:860px){
+  .nav{display:none}
+  .hero .wrap{grid-template-columns:1fr;padding-top:40px;padding-bottom:48px;gap:34px}
+  .hero-art{max-width:380px}
+  .story-grid{grid-template-columns:1fr;gap:30px}
+  .steps{grid-template-columns:1fr}
+  .strip .wrap{grid-template-columns:1fr;gap:14px}
+  .sec{padding:64px 0}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .top .bag-btn .lbl-txt{display:none}
+  .hero p.lead{font-size:16px}
+  .btns .btn{flex:1 1 100%}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .card .body{padding:12px 12px 14px;gap:10px}
+  .card h4{font-size:16px}
+  .card .meta{flex-direction:column;gap:2px}
+  .card .desc{display:none}
+  .card .price{font-size:15px}
+  .sizes button{min-width:40px;height:38px;padding:0 8px;font-size:13px}
+  .seg button{font-size:12px;height:34px}
+  .add{height:42px;font-size:13px}
+  .thumbs button{width:36px;height:36px}
+  .values{grid-template-columns:repeat(2,1fr)}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:35;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(243,238,230,.96);border-top:1px solid var(--line);backdrop-filter:blur(8px)}
+  .mbar .btn{flex:1;height:48px;font-size:14px;padding:0 12px}
+  .toast{bottom:84px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="BRAVEN, início"><i class="eagle" aria-hidden="true"></i><b>BRAVEN</b></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#historia">A história</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#medidas">Medidas</a>
+      <a href="#como-comprar">Como comprar</a>
+    </nav>
+    <div class="top-actions">
+      <button class="bag-btn" data-open-bag aria-label="Abrir sacola">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="lbl-txt">Sacola</span><span class="count" data-count data-n="0">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <i class="eagle hero-bg-eagle" aria-hidden="true"></i>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Forjado na coragem</span>
+      <h1 class="display">BRAVEN</h1>
+      <p class="tag">Vista a coragem.</p>
+      <p class="lead">Camisetas e bonés com propósito. <strong>Todo o lucro da marca vai para o tratamento e a recuperação do Raul.</strong></p>
+      <div class="btns">
+        <a class="btn btn-dark" href="#catalogo">Ver o catálogo</a>
+        <a class="btn btn-line" href="#historia">Conhecer a história</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img class="shirt s2" src="img/fe.jpg" alt="">
+      <img class="shirt s1" src="img/forca.jpg" alt="">
+      <img class="shirt s4" src="img/coragem.jpg" alt="">
+      <img class="shirt s3" src="img/proposito.jpg" alt="">
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>100%</b><span>do lucro vai para o<br>tratamento do Raul</span></div>
+    <div><b>60</b><span>camisetas vendidas antes<br>mesmo do lançamento</span></div>
+    <div><b>100%</b><span>algodão, modelagem<br>exclusiva</span></div>
+  </div>
+</div>
+
+<section class="sec story" id="historia">
+  <div class="wrap story-grid">
+    <div class="story-text">
+      <div class="sec-head" style="margin-bottom:24px"><div><span class="eyebrow">Quem somos</span><h2 class="display">Uma marca que nasceu de um recomeço</h2></div></div>
+      <p>O Raul é um jovem que, depois de um acidente, começou um capítulo novo da vida: hospital, tratamento e uma recuperação que ainda continua. A família, os amigos e a namorada, Maria, estiveram com ele em cada etapa. No dia 24 de dezembro de 2025 ele teve alta e passou o Natal em casa.</p>
+      <p>A BRAVEN veio dessa resiliência. A família resolveu transformar a fase mais difícil em uma marca de roupa que fala de força, fé, propósito e coragem, e <strong>a totalidade dos lucros vai direto para o tratamento e a recuperação do Raul</strong>.</p>
+      <p>A primeira peça foi a camiseta <strong>Seja Forte &amp; Corajoso</strong>. Antes do lançamento, 60 pessoas já tinham garantido a sua. Depois vieram os bonés com a águia e a coleção <strong>Valores</strong>, em quatro cores. Cada peça vendida ajuda a pagar o tratamento.</p>
+    </div>
+    <aside>
+      <div class="quote">
+        <i class="eagle" aria-hidden="true"></i>
+        <blockquote>“Não devemos permitir que os problemas pequenos dessa vida ocupem um lugar central e nos dominem.”</blockquote>
+        <cite>Pai do Raul, em depoimento à BRAVEN</cite>
+      </div>
+      <div class="values" aria-label="Valores da marca">
+        <div style="background:#4f5a3c">FORÇA</div>
+        <div style="background:#2a5f9e">FÉ</div>
+        <div style="background:#a8323a">PROPÓSITO</div>
+        <div style="background:#b4562e">CORAGEM</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec" id="catalogo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Catálogo</span><h2 class="display">Escolha a sua</h2></div>
+      <p>Escolha o modelo e o tamanho, coloque na sacola e envie o pedido pelo WhatsApp. A confirmação de estoque, o frete e o pagamento são combinados por lá.</p>
+    </div>
+    <nav class="cat-nav" id="catNav" aria-label="Categorias"></nav>
+    <div id="catalog"></div>
+  </div>
+</section>
+
+<section class="sec story" id="medidas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Tabela de medidas</span><h2 class="display">Qual é o seu tamanho?</h2></div>
+      <p>Medidas da peça em centímetros, largura × altura. Compare com uma camiseta que você já tem e veste bem.</p>
+    </div>
+    <div class="tables">
+      <div class="tbl"><h4>Valores · Masculina</h4><table>
+        <tr><td>G</td><td>56 × 73</td></tr><tr><td>GG</td><td>61 × 75</td></tr><tr><td>G1</td><td>65 × 79</td></tr></table></div>
+      <div class="tbl"><h4>Valores · Babylook</h4><table>
+        <tr><td>M</td><td>42 × 62</td></tr><tr><td>G</td><td>46 × 63</td></tr><tr><td>GG</td><td>48 × 64</td></tr></table></div>
+      <div class="tbl"><h4>Cropped feminino</h4><table>
+        <tr><td>M</td><td>52 × 46</td></tr><tr><td>G</td><td>55 × 47</td></tr></table></div>
+      <div class="tbl"><h4>Seja Forte · Masculina</h4><table>
+        <tr><td>G</td><td>53 × 71</td></tr><tr><td>GG</td><td>55 × 74</td></tr></table></div>
+      <div class="tbl"><h4>Seja Forte · Feminina</h4><table>
+        <tr><td>M</td><td>46,5 × 61</td></tr><tr><td>G</td><td>48,5 × 64</td></tr></table></div>
+      <div class="tbl"><h4>Infantil</h4><table>
+        <tr><td>6 anos</td><td>Consulte</td></tr><tr><td>8 anos</td><td>Consulte</td></tr></table></div>
+    </div>
+    <p class="note">Seja Forte &amp; Corajoso masculina: gramatura 165. Bonés: tamanho único, com regulagem atrás.</p>
+    <div class="feats"><span>100% algodão</span><span>Toque macio</span><span>Estampa de alta qualidade</span><span>Alta durabilidade</span></div>
+  </div>
+</section>
+
+<section class="sec how" id="como-comprar">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow" style="color:var(--olive)">Como comprar</span><h2 class="display">Três passos, direto no WhatsApp</h2></div></div>
+    <div class="steps">
+      <div class="step"><h4>Escolha as peças</h4><p>Selecione modelo e tamanho de cada peça e adicione à sacola.</p></div>
+      <div class="step"><h4>Envie o pedido</h4><p>Toque em “Enviar pedido”. O WhatsApp abre com a lista pronta, é só mandar.</p></div>
+      <div class="step"><h4>Combine e receba</h4><p>A BRAVEN confirma o estoque, calcula o frete e envia o Pix ou o link de pagamento.</p></div>
+    </div>
+    <div class="btns">
+      <a class="btn btn-dark" href="#catalogo">Montar meu pedido</a>
+      <a class="btn btn-wa" data-wa-direct href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.6 2 2.16 6.44 2.16 11.88c0 1.74.46 3.44 1.32 4.94L2.08 22l5.33-1.4a9.86 9.86 0 0 0 4.63 1.18h.01c5.44 0 9.88-4.44 9.88-9.88 0-2.64-1.03-5.12-2.88-6.99zM12.05 20.1h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.16.83.84-3.08-.2-.32a8.17 8.17 0 0 1-1.25-4.33c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.86 5.8 2.41a8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.22-8.15 8.22zm4.5-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.16 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.07.14-1.17-.06-.1-.22-.16-.47-.29z"/></svg>
+        Tirar dúvidas no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#inicio"><i class="eagle" aria-hidden="true"></i><b>BRAVEN</b></a>
+      <p>Mais que roupas. Valores.</p>
+    </div>
+    <div class="links">
+      <a href="https://www.instagram.com/braven.forjadonacoragem/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        @braven.forjadonacoragem</a>
+      <a data-wa-direct href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>
+        <span data-phone-label></span></a>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn-line" href="#catalogo">Catálogo</a>
+  <button class="btn btn-dark" data-open-bag>Sacola <span class="count" data-count data-n="0">0</span></button>
+</div>
+
+<div class="scrim" data-close-bag></div>
+<aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+  <div class="d-head"><h3 id="bagTitle">Sua sacola</h3><button class="x" data-close-bag aria-label="Fechar">×</button></div>
+  <div class="d-body" id="bagBody"></div>
+  <div class="d-foot" id="bagFoot">
+    <div class="fields">
+      <input id="fName" placeholder="Seu nome" autocomplete="name">
+      <input id="fCity" placeholder="Sua cidade" autocomplete="address-level2">
+    </div>
+    <div class="total"><span>Total</span><span id="bagTotal">—</span></div>
+    <a class="btn btn-wa" id="sendOrder" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      Enviar pedido pelo WhatsApp
+    </a>
+    <p class="fine">Frete e pagamento (Pix ou link) são combinados na conversa.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ====================================================================
+   CONFIGURAÇÃO — edite aqui
+   - WHATSAPP: número com 55 + DDD, só dígitos
+   - preco: valor em reais (ex.: 89.90). Deixe null para mostrar "Consulte"
+   ==================================================================== */
+const WHATSAPP = "5535997335755";
+
+const VALORES_TAM = { "Masculina": ["G","GG","G1"], "Babylook": ["M","G","GG"] };
+const SFC_TAM     = { "Masculina": ["G","GG"], "Feminina": ["M","G"] };
+
+const CATALOGO = [
+  { grupo:"Coleção Valores", sub:"Camisetas · 100% algodão", itens:[
+    { id:"forca",     nome:"FORÇA.",     cor:"Verde estonado",    preco:null, imgs:["forca"],     tam:VALORES_TAM, desc:"Estampa frontal e águia na manga." },
+    { id:"fe",        nome:"FÉ.",        cor:"Azul estonado",     preco:null, imgs:["fe"],        tam:VALORES_TAM, desc:"Estampa frontal e águia na manga." },
+    { id:"proposito", nome:"PROPÓSITO.", cor:"Vermelho estonado", preco:null, imgs:["proposito"], tam:VALORES_TAM, desc:"Estampa frontal e águia na manga." },
+    { id:"coragem",   nome:"CORAGEM.",   cor:"Terracota estonado",preco:null, imgs:["coragem"],   tam:VALORES_TAM, desc:"Estampa frontal e águia na manga." },
+  ]},
+  { grupo:"Seja Forte & Corajoso", sub:"A camiseta que começou tudo", itens:[
+    { id:"sfc-preta", nome:"SEJA FORTE & CORAJOSO", cor:"Preta",        preco:null, imgs:["sfc-preta-costas","sfc-preta-frente"], tam:SFC_TAM, desc:"BRAVEN no peito, arte grande nas costas.", badge:"Original" },
+    { id:"sfc-verde", nome:"SEJA FORTE & CORAJOSO", cor:"Verde militar", preco:null, imgs:["sfc-verde-costas","sfc-verde-frente"], tam:SFC_TAM, desc:"BRAVEN no peito, arte grande nas costas.", badge:"Original" },
+  ]},
+  { grupo:"Croppeds femininos", sub:"Mesmos valores, mais estilo", itens:[
+    { id:"cropped-proposito", nome:"PROPÓSITO.", cor:"Cropped · vermelho estonado", preco:null, imgs:["cropped-proposito"], tam:{ "Cropped":["M","G"] }, desc:"Modelo cropped feminino." },
+    { id:"cropped-fe",        nome:"FÉ.",        cor:"Cropped · azul estonado",     preco:null, imgs:["cropped-fe"],        tam:{ "Cropped":["M","G"] }, desc:"Modelo cropped feminino." },
+  ]},
+  { grupo:"Infantil", sub:"Conforto para o dia a dia", itens:[
+    { id:"infantil-coragem", nome:"CORAGEM.", cor:"Verde infantil", preco:null, imgs:["infantil-coragem"], tam:{ "Infantil":["6 anos","8 anos"] }, desc:"Camiseta infantil da coleção Valores." },
+  ]},
+  { grupo:"Bonés", sub:"Trucker · camurça e telinha", itens:[
+    { id:"bone-preto", nome:"BONÉ ÁGUIA", cor:"Preto",          preco:null, imgs:["bone-preto"],              tam:{ "Tamanho":["Único"] }, desc:"Patch da águia na frente, BRAVEN nas laterais. Regulagem atrás." },
+    { id:"bone-verde", nome:"BONÉ ÁGUIA", cor:"Verde e marrom", preco:null, imgs:["bone-verde","bone-detalhe"], tam:{ "Tamanho":["Único"] }, desc:"Patch da águia na frente, BRAVEN nas laterais. Regulagem atrás." },
+  ]},
+];
+/* ==================================================================== */
+
+const $ = (s, el=document) => el.querySelector(s);
+const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const byId = {};
+CATALOGO.forEach(g => g.itens.forEach(p => byId[p.id] = p));
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const waLink = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
+// telefone exibido + links diretos
+const ph = WHATSAPP.replace(/^55/,"");
+document.querySelectorAll("[data-phone-label]").forEach(el => el.textContent = `(${ph.slice(0,2)}) ${ph.slice(2,7)}-${ph.slice(7)}`);
+document.querySelectorAll("[data-wa-direct]").forEach(el => el.href = waLink("Olá! Vim pelo catálogo da BRAVEN e tenho uma dúvida."));
+
+/* ---------- catálogo ---------- */
+const catEl = $("#catalog"), navEl = $("#catNav");
+CATALOGO.forEach(g => {
+  const gid = "g-" + slug(g.grupo);
+  navEl.insertAdjacentHTML("beforeend", `<a href="#${gid}">${g.grupo}</a>`);
+  const sec = document.createElement("div");
+  sec.className = "group"; sec.id = gid;
+  sec.innerHTML = `<div class="group-head"><h3>${g.grupo}</h3><small>${g.sub}</small></div><div class="grid"></div>`;
+  g.itens.forEach(p => $(".grid", sec).appendChild(card(p)));
+  catEl.appendChild(sec);
+});
+
+function card(p){
+  const el = document.createElement("article");
+  el.className = "card";
+  const modelos = Object.keys(p.tam);
+  let modelo = modelos[0], tamanho = modelos.length === 1 && p.tam[modelo].length === 1 ? p.tam[modelo][0] : null;
+  const price = p.preco != null ? `<span class="price">${brl(p.preco)}</span>` : `<span class="price ask">Consulte</span>`;
+  el.innerHTML = `
+    <div class="ph">
+      <img src="img/${p.imgs[0]}.jpg" alt="${p.nome} ${p.cor}" loading="lazy">
+      ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+      ${p.imgs.length > 1 ? `<div class="thumbs">${p.imgs.map((im,i)=>`<button aria-pressed="${i===0}" aria-label="Foto ${i+1}" data-img="${im}"><img src="img/${im}.jpg" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
+    </div>
+    <div class="body">
+      <div><h4>${p.nome}</h4><div class="meta"><span class="cor">${p.cor}</span>${price}</div></div>
+      <p class="desc">${p.desc}</p>
+      ${modelos.length > 1 ? `<div><div class="lbl">Modelo</div><div class="seg">${modelos.map((m,i)=>`<button aria-pressed="${i===0}" data-m="${m}">${m}</button>`).join("")}</div></div>` : ""}
+      <div><div class="lbl">${modelos.length > 1 || modelos[0]==="Tamanho" ? "Tamanho" : modelos[0] === "Infantil" ? "Idade" : "Tamanho"}</div><div class="sizes"></div></div>
+      <button class="add"></button>
+    </div>`;
+  const sizesEl = $(".sizes", el), addBtn = $(".add", el), mainImg = $(".ph > img", el);
+  const drawSizes = () => {
+    sizesEl.innerHTML = p.tam[modelo].map(t => `<button aria-pressed="${t===tamanho}" data-t="${t}">${t}</button>`).join("");
+    addBtn.disabled = !tamanho;
+    addBtn.textContent = tamanho ? "Adicionar à sacola" : "Escolha o tamanho";
+  };
+  drawSizes();
+  el.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.img){ mainImg.src = `img/${b.dataset.img}.jpg`; el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-pressed", x===b)); }
+    else if (b.dataset.m){ modelo = b.dataset.m; tamanho = null; el.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed", x===b)); drawSizes(); }
+    else if (b.dataset.t){ tamanho = b.dataset.t; drawSizes(); }
+    else if (b === addBtn && tamanho){
+      addToBag(p.id, modelos.length > 1 ? modelo : null, tamanho);
+      addBtn.classList.add("ok"); addBtn.textContent = "Adicionado ✓";
+      setTimeout(()=>{ addBtn.classList.remove("ok"); drawSizes(); }, 1400);
+    }
+  });
+  return el;
+}
+
+/* ---------- sacola ---------- */
+let bag = [];
+try { bag = JSON.parse(localStorage.getItem("braven-bag") || "[]").filter(l => byId[l.id]); } catch(e){ bag = []; }
+const save = () => { try { localStorage.setItem("braven-bag", JSON.stringify(bag)); } catch(e){} };
+
+function addToBag(id, modelo, tam){
+  const key = `${id}|${modelo||""}|${tam}`;
+  const found = bag.find(l => l.key === key);
+  found ? found.q++ : bag.push({ key, id, modelo, tam, q:1 });
+  save(); renderBag();
+  toast(`${byId[id].nome} ${tam === "Único" ? "" : tam} adicionado`.replace(/\s+/g," "));
+}
+function lineLabel(l){ const p = byId[l.id]; return `${p.nome} · ${p.cor}`; }
+function lineSub(l){ return [l.modelo, l.tam === "Único" ? "Tamanho único" : l.tam].filter(Boolean).join(" · "); }
+
+function renderBag(){
+  const n = bag.reduce((s,l)=>s+l.q,0);
+  document.querySelectorAll("[data-count]").forEach(c => { c.textContent = n; c.dataset.n = n; });
+  const body = $("#bagBody"), foot = $("#bagFoot");
+  if (!bag.length){
+    body.innerHTML = `<div class="empty"><i class="eagle" aria-hidden="true"></i><p>Sua sacola está vazia.<br>Escolha uma peça no catálogo.</p></div>`;
+    foot.style.display = "none"; return;
+  }
+  foot.style.display = "";
+  body.innerHTML = bag.map((l,i) => {
+    const p = byId[l.id];
+    return `<div class="line"><img src="img/${p.imgs[0]}.jpg" alt=""><div><b>${lineLabel(l)}</b><small>${lineSub(l)}${p.preco!=null ? " · " + brl(p.preco) : ""}</small></div>
+      <div class="qty"><button data-dec="${i}" aria-label="Diminuir">−</button><span>${l.q}</span><button data-inc="${i}" aria-label="Aumentar">+</button></div></div>`;
+  }).join("");
+  const allPriced = bag.every(l => byId[l.id].preco != null);
+  const total = bag.reduce((s,l)=> s + (byId[l.id].preco||0) * l.q, 0);
+  $("#bagTotal").textContent = allPriced ? brl(total) : "a confirmar";
+  $("#sendOrder").href = waLink(orderText(allPriced, total));
+}
+function orderText(allPriced, total){
+  const name = $("#fName").value.trim(), city = $("#fCity").value.trim();
+  const lines = bag.map(l => {
+    const p = byId[l.id];
+    return `• ${l.q}x ${lineLabel(l)} (${lineSub(l)})${p.preco!=null ? " — " + brl(p.preco*l.q) : ""}`;
+  });
+  return [
+    "Olá! Quero fazer um pedido BRAVEN 🦅", "",
+    ...lines, "",
+    allPriced ? `Total: ${brl(total)} + frete` : "Pode me passar o valor e o frete?",
+    name ? `Nome: ${name}` : "", city ? `Cidade: ${city}` : ""
+  ].filter((x,i,a)=> x !== "" || (a[i-1] !== "" && i < a.length-1)).join("\n").trim();
+}
+$("#bagBody").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.inc){ bag[+b.dataset.inc].q++; }
+  if (b.dataset.dec){ const i = +b.dataset.dec; if (--bag[i].q <= 0) bag.splice(i,1); }
+  save(); renderBag();
+});
+["fName","fCity"].forEach(id => $("#"+id).addEventListener("input", renderBag));
+
+const openBag = () => { $("#toast").classList.remove("show"); document.body.classList.add("open"); setTimeout(()=>$(".drawer .x").focus(), 50); };
+const closeBag = () => document.body.classList.remove("open");
+document.querySelectorAll("[data-open-bag]").forEach(b => b.addEventListener("click", openBag));
+document.querySelectorAll("[data-close-bag]").forEach(b => b.addEventListener("click", closeBag));
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeBag(); });
+
+let tt;
+function toast(msg){
+  const t = $("#toast");
+  t.innerHTML = `${msg}<button type="button">Ver sacola</button>`;
+  $("button", t).onclick = () => { t.classList.remove("show"); openBag(); };
+  t.classList.add("show"); clearTimeout(tt); tt = setTimeout(()=>t.classList.remove("show"), 3200);
+}
+renderBag();
+</script>
+</body>
+</html>

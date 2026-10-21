@@ -129,6 +129,10 @@ section{scroll-margin-top:64px}
 .thumbs button[aria-pressed="true"]{border-color:var(--ink);opacity:1}
 .thumbs img{width:100%;height:100%;object-fit:cover}
 .badge{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;border-radius:6px}
+.badge.sold{display:none;background:var(--terra)}
+.card.out .badge.sold{display:block}
+.card.out .badge:not(.sold){display:none}
+.card.out .ph > img{opacity:.55}
 .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
 .card h4{font:400 21px/1.1 "Archivo Black";letter-spacing:.02em}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:4px}
@@ -144,6 +148,7 @@ section{scroll-margin-top:64px}
 .sizes button{min-width:48px;height:42px;padding:0 12px;border-radius:9px;border:1.5px solid var(--line);font-weight:700;font-size:14px;background:var(--white)}
 .sizes button:hover{border-color:var(--ink)}
 .sizes button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sizes button:disabled{background:var(--cream);border-color:var(--line);border-style:dashed;color:var(--muted);font-weight:600;text-decoration:line-through;cursor:not-allowed}
 .medida{display:flex;flex-direction:column;gap:3px;font-size:13px;line-height:1.35;color:var(--olive);background:#eef0e8;border-radius:9px;padding:9px 11px}
 .medida .mrow{display:flex;justify-content:space-between;gap:8px}
 .medida a{font-size:12px;font-weight:700;margin-top:2px}
@@ -416,6 +421,9 @@ body.open{overflow:hidden}
    - CONTATOS: o primeiro recebe os pedidos; o segundo aparece como alternativa
      (número com 55 + DDD, só dígitos)
    - TIKTOK: cole o link do perfil quando existir; vazio = não aparece
+   - ESTOQUE: endereço do controle de estoque. Tamanho que zerar lá aparece
+     esgotado aqui até a Lili dar entrada de novo; vazio = não consulta.
+     O id de cada produto do CATALOGO é o "Código no site" dele no estoque
    - preco: valor em reais (ex.: 89.90). Deixe null para mostrar "Consulte"
    - Medidas em cm: [largura, altura]
    ==================================================================== */
@@ -424,6 +432,7 @@ const CONTATOS = [
   { nome:"Jo",   whatsapp:"5535997335755" },
 ];
 const TIKTOK = "";
+const ESTOQUE = "/estoque/api/esgotados";
 
 const MED = {
   valoresMasc: { "G":[56,73], "GG":[61,75], "G1":[65,79] },
@@ -497,6 +506,34 @@ $("#tables").innerHTML = TABELAS.map(t => `<div class="tbl"><h4>${t.titulo}</h4>
   <thead><tr><th>Tamanho</th><th>Largura</th><th>Altura</th></tr></thead><tbody>
   ${Object.entries(t.med).map(([k,[l,a]]) => `<tr><td>${k}</td><td>${cm(l)}</td><td>${cm(a)}</td></tr>`).join("")}</tbody></table></div>`).join("");
 
+/* ---------- estoque ---------- */
+// tamanhos zerados no controle de estoque, por id do produto: { "cropped-fe": ["M"] }
+let esgotados = {};
+const redraw = [];
+function esgotado(id, modelo, tam){
+  const z = esgotados[id];
+  if (!Array.isArray(z)) return false;
+  // lá o tamanho se chama "Masculina G", ou só "M" quando o produto tem um modelo só
+  const m = modelo || Object.keys(byId[id].tam)[0];
+  return z.includes(`${m} ${tam}`) || z.includes(tam);
+}
+function carregarEstoque(){
+  if (!ESTOQUE) return;
+  fetch(ESTOQUE, { cache:"no-store" })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(j => {
+      esgotados = j || {};
+      redraw.forEach(f => f());
+      const fora = bag.filter(l => esgotado(l.id, l.modelo, l.tam));
+      if (!fora.length) return;
+      bag = bag.filter(l => !fora.includes(l));
+      save(); renderBag();
+      const n = fora.reduce((s,l)=>s+l.q,0);
+      toast(n === 1 ? "1 peça esgotou e saiu da sacola" : `${n} peças esgotaram e saíram da sacola`);
+    })
+    .catch(() => {}); // estoque fora do ar: segue vendendo tudo, como antes
+}
+
 /* ---------- catálogo ---------- */
 const catEl = $("#catalog"), navEl = $("#catNav");
 CATALOGO.forEach(g => {
@@ -513,12 +550,14 @@ function card(p){
   const el = document.createElement("article");
   el.className = "card";
   const modelos = Object.keys(p.tam);
-  let modelo = modelos[0], tamanho = modelos.length === 1 && p.tam[modelo].length === 1 ? p.tam[modelo][0] : null;
+  const unico = modelos.length === 1 && p.tam[modelos[0]].length === 1 ? p.tam[modelos[0]][0] : null;
+  let modelo = modelos[0], tamanho = unico;
   const price = p.preco != null ? `<span class="price">${brl(p.preco)}</span>` : `<span class="price ask">Consulte</span>`;
   el.innerHTML = `
     <div class="ph">
       <img src="img/${p.imgs[0]}.jpg" alt="${p.nome} ${p.cor}" loading="lazy">
       ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+      <span class="badge sold">Esgotado</span>
       ${p.imgs.length > 1 ? `<div class="thumbs">${p.imgs.map((im,i)=>`<button aria-pressed="${i===0}" aria-label="Foto ${i+1}" data-img="${im}"><img src="img/${im}.jpg" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
     </div>
     <div class="body">
@@ -531,9 +570,14 @@ function card(p){
     </div>`;
   const sizesEl = $(".sizes", el), addBtn = $(".add", el), mainImg = $(".ph > img", el);
   const drawSizes = () => {
-    sizesEl.innerHTML = p.tam[modelo].map(t => `<button aria-pressed="${t===tamanho}" data-t="${t}">${t}</button>`).join("");
+    if (tamanho && esgotado(p.id, modelo, tamanho)) tamanho = null;
+    if (!tamanho && unico && !esgotado(p.id, modelo, unico)) tamanho = unico;
+    const tudo = modelos.every(m => p.tam[m].every(t => esgotado(p.id, m, t)));
+    const nesse = p.tam[modelo].every(t => esgotado(p.id, modelo, t));
+    el.classList.toggle("out", tudo);
+    sizesEl.innerHTML = p.tam[modelo].map(t => `<button aria-pressed="${t===tamanho}" data-t="${t}"${esgotado(p.id, modelo, t) ? ' disabled title="Esgotado"' : ""}>${t}</button>`).join("");
     addBtn.disabled = !tamanho;
-    addBtn.textContent = tamanho ? "Adicionar à sacola" : "Escolha o tamanho";
+    addBtn.textContent = tamanho ? "Adicionar à sacola" : tudo ? "Esgotado" : nesse ? "Modelo esgotado" : "Escolha o tamanho";
     const md = $(".medida", el);
     if (md){
       const m = tamanho && p.med[modelo] && p.med[modelo][tamanho];
@@ -544,6 +588,7 @@ function card(p){
     }
   };
   drawSizes();
+  redraw.push(drawSizes);
   el.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     if (b.dataset.img){ mainImg.src = `img/${b.dataset.img}.jpg`; el.querySelectorAll(".thumbs button").forEach(x=>x.setAttribute("aria-pressed", x===b)); }
@@ -617,7 +662,7 @@ $("#bagBody").addEventListener("click", e => {
 });
 ["fName","fCity"].forEach(id => $("#"+id).addEventListener("input", renderBag));
 
-const openBag = () => { $("#toast").classList.remove("show"); document.body.classList.add("open"); setTimeout(()=>$(".drawer .x").focus(), 50); };
+const openBag = () => { carregarEstoque(); $("#toast").classList.remove("show"); document.body.classList.add("open"); setTimeout(()=>$(".drawer .x").focus(), 50); };
 const closeBag = () => document.body.classList.remove("open");
 document.querySelectorAll("[data-open-bag]").forEach(b => b.addEventListener("click", openBag));
 document.querySelectorAll("[data-close-bag]").forEach(b => b.addEventListener("click", closeBag));
@@ -631,6 +676,8 @@ function toast(msg){
   t.classList.add("show"); clearTimeout(tt); tt = setTimeout(()=>t.classList.remove("show"), 3200);
 }
 renderBag();
+carregarEstoque();
+document.addEventListener("visibilitychange", () => { if (!document.hidden) carregarEstoque(); });
 </script>
 </body>
 </html>

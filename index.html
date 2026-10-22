@@ -431,7 +431,7 @@ const CONTATOS = [
   { nome:"Lili", whatsapp:"5535999774953" },
   { nome:"Jo",   whatsapp:"5535997335755" },
 ];
-const TIKTOK = "";
+const TIKTOK = "https://www.tiktok.com/@braven.forjadonacoragem";
 const ESTOQUE = "/estoque/api/esgotados";
 
 const MED = {
@@ -498,7 +498,7 @@ const ICON = {
 const foot = $("#footLinks");
 CONTATOS.forEach(c => foot.insertAdjacentHTML("beforeend",
   `<a href="${waLink(c.whatsapp, `Olá, ${c.nome}! Vim pelo catálogo da BRAVEN.`)}" target="_blank" rel="noopener">${ICON.wa}${c.nome} · ${fmtPhone(c.whatsapp)}</a>`));
-if (TIKTOK) foot.insertAdjacentHTML("beforeend", `<a href="${TIKTOK}" target="_blank" rel="noopener">${ICON.tt}TikTok</a>`);
+if (TIKTOK) foot.firstElementChild.insertAdjacentHTML("afterend",`<a href="${TIKTOK}" target="_blank" rel="noopener">${ICON.tt}@${TIKTOK.split("@")[1]}</a>`);
 
 /* ---------- tabelas de medidas ---------- */
 const cm = v => String(v).replace(".", ",") + " cm";
